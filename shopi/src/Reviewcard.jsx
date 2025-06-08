@@ -11,7 +11,7 @@ function Reviewcard({ review }) {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     speed: 4000,
@@ -28,7 +28,7 @@ function Reviewcard({ review }) {
             key={index}
             className="px-2"
           >
-            <div className="bg-white rounded-lg shadow-md min-w-50 max-w-64 text-center h-60">
+            <div className="bg-white rounded-lg shadow-md min-w-50 max-w-64 text-center h-60 mx-auto">
               <div className="bg-sky-500/100 h-28 flex items-center mb-4 rounded-t-lg">
               <img
                 src="/vite.svg"
