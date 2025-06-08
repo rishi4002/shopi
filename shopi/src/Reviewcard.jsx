@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import userImage from "./userimage.jpg";
 
 function Reviewcard({ review }) {
   if (review.length === 0) {
@@ -10,6 +11,7 @@ function Reviewcard({ review }) {
 
   const settings = {
     dots: true,
+    arrows: false,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -20,7 +22,7 @@ function Reviewcard({ review }) {
   };
 
   return (
-    <div className="w-full max-w-[480px] m-auto ">
+    <div className="w-full max-w-[480px] m-auto pb-3">
       
       <Slider {...settings}>
         {review.map((item, index) => (
@@ -28,12 +30,12 @@ function Reviewcard({ review }) {
             key={index}
             className="px-2"
           >
-            <div className="bg-white rounded-lg shadow-md min-w-50 max-w-64 text-center h-60 mx-auto">
+            <div className="bg-white rounded-lg shadow-xl shadow-cyan-700 min-w-50 max-w-64 text-center h-60 mx-auto">
               <div className="bg-sky-500/100 h-28 flex items-center mb-4 rounded-t-lg">
               <img
-                src="/vite.svg"
+                src={userImage}
                 alt="Reviewer"
-                className="w-16 h-16 rounded-full mx-auto"
+                className="w-16 h-16 rounded-full mx-auto border-2 border-white"
               />
               </div>
               <p className="text-base font-medium mb-2">{item.comment}</p>

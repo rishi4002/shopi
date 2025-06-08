@@ -56,7 +56,7 @@ else setnoProduct(true);
         <>{(Product == "")? <Boxloading/>:
             <div> 
                 <IoMdArrowRoundBack className="fixed top-16 left-5 text-2xl" onClick={handleBack}/>
-         <div className="min-w-35 max-w-[800px] rounded-md md:flex m-12 pb-10">
+         <div className="min-w-35 max-w-[800px] rounded-md md:flex mt-12 mx-12 pb-2">
            <div className="w-full max-h-1/2 md:max-w-60 md:h-full">
             <img className="max-h-52 object-contain m-auto" src={Product.thumbnail} alt="product"/>
             <div className="hidden md:flex mt-5">
@@ -86,7 +86,8 @@ else setnoProduct(true);
            {noProduct && <div className="m-2 text-red-500">Please select quentity.</div>} 
             </div>
             </div>
-                <div className="pb-10">
+                <div className="pb-10 text-center">
+                    <h1 className="mb-2">Reviews</h1>
                     <Reviewcard review={Product.reviews}/>
                 </div>
                 
