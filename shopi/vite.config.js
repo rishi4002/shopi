@@ -7,7 +7,5 @@ export default defineConfig({
   plugins: [react(),
      tailwindcss(),
   ],
-    server: {
-    historyApiFallback: true,  // <-- Add this line
-  }
+   
 })

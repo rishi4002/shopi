@@ -3,6 +3,7 @@ import { getproduct } from "./Apis";
 import { useNavigate, useParams } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Boxloading from "./Boxloading";
+import Reviewcard from "./Reviewcard";
 
 function Detailcard(){
     const [Product, setProduct] = useState("");
@@ -10,7 +11,7 @@ function Detailcard(){
     const [noProduct, setnoProduct]= useState(false);
     const [apiWorks, setapiWorks]= useState(true);
    
-   
+   console.log(Product.reviews);
     const params= useParams();
     const id= params.id;
     let navigate= useNavigate();
@@ -85,7 +86,10 @@ else setnoProduct(true);
            {noProduct && <div className="m-2 text-red-500">Please select quentity.</div>} 
             </div>
             </div>
-
+                <div className="pb-10">
+                    <Reviewcard review={Product.reviews}/>
+                </div>
+                
         </div>}
         </>
     )
