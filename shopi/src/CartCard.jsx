@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { memo } from "react";
 
 
 
@@ -24,4 +24,4 @@ function handleRemove() {
 }
 
 
-export default CartCard;
+export default memo(CartCard);

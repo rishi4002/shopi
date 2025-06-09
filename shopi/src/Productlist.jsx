@@ -1,4 +1,4 @@
-import { useState , useEffect, useMemo} from "react";
+import { useState , useEffect, useMemo, memo} from "react";
 import { getproductlist } from "./Apis";
 import Card from "./Card";
 import Loading from "./Loading";
@@ -56,6 +56,8 @@ function Productlist(){
             </div>
         )
     }
+
+
     return (
         <>
            {allProducts.length === 0 ? <Loading/> :<div className="bg-white mt-10 p-10 m-auto flex flex-col">
@@ -82,4 +84,4 @@ function Productlist(){
     )
 }
 
-export default Productlist;
+export default memo(Productlist);

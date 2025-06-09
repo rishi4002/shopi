@@ -1,4 +1,4 @@
-import  { useEffect, useMemo, useState } from "react";
+import  { useCallback, useEffect, useMemo, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { getproductlist } from "./Apis";
@@ -9,10 +9,11 @@ import Boxloading from "./Boxloading";
 function Cart() {
 
     const [Products, setProducts]= useState([]);
-    const navigate= useNavigate();
     const [apiWorks, setapiWorks]= useState(true);
     const [cartData, setcartData] = useState(JSON.parse(localStorage.getItem("cart") || "{}")) ;
 
+    const navigate= useNavigate();
+    
     useEffect(()=>{
       setTimeout(() => {
             getproductlist().then((response)=>{
@@ -34,7 +35,7 @@ function Cart() {
     }
 
  
-   const cartKeys= Object.keys(cartData);
+   const cartKeys= useMemo(()=> Object.keys(cartData), [cartData]); 
 
       const cartProducts= useMemo(()=>{
         return Products.filter((product)=> {
@@ -46,7 +47,8 @@ function Cart() {
       })    
     },[Products,cartData]);
 
-      const productWithCount= useMemo(()=>{
+      
+    const productWithCount= useMemo(()=>{
        
         return cartProducts.map((item)=>{
             for (let i = 0; i < cartKeys.length; i++) {
@@ -59,9 +61,9 @@ function Cart() {
  },[cartProducts] );
 
     
-function handleBack(){
+const handleBack = useCallback(function () {
        navigate("/");
-    }
+    }, []);
 
 
     if (apiWorks === false) {
@@ -75,7 +77,7 @@ function handleBack(){
         <>
         {(Products.length === 0) ? <Boxloading/>: <div>
             <IoMdArrowRoundBack className="fixed top-16 left-5 text-2xl" onClick={handleBack}/>
-            {productWithCount.length===0 ? <div className="text-xl sm:text-2xl text-sky-500/100 flex items-center h-full"><p>nothing in the cart.</p></div>: 
+            {productWithCount.length===0 ? <div className="text-xl sm:text-2xl text-sky-500/100 flex items-center h-full"><p>Your cart is empty.</p></div>: 
                 <div className="mt-10 p-10 m-auto flex flex-col"> 
                 {productWithCount.map((item)=>{
                    return <CartCard key={item.id} title={item.title} category={item.category} price={item.price} thumbnail={item.thumbnail} id={item.id} count={item.count} remove={removeHandler}/>

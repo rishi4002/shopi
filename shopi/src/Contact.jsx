@@ -1,4 +1,4 @@
-import React from "react";
+import  { memo, useCallback } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import logoImage from "./logo.png";
@@ -6,12 +6,13 @@ import logoImage from "./logo.png";
 
 
 function Contact() {
-     let navigate= useNavigate();
+    
+    let navigate= useNavigate();
 
 
-     function handleBack(){
+    const handleBack= useCallback(function (){
        navigate("/");
-    }
+    },[]);
 
     return(
         <div className="flex flex-col w-full">
@@ -36,4 +37,4 @@ function Contact() {
 }
 
 
-export default Contact;
+export default memo(Contact);

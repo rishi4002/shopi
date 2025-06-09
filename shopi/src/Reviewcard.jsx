@@ -1,10 +1,12 @@
-import React from "react";
+import {memo} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import userImage from "./userimage.jpg";
 
 function Reviewcard({ review }) {
+ 
+ 
   if (review.length === 0) {
     return <div className="text-center p-4 text-2xl text-sky-500/100">No reviews available.</div>;
   }
@@ -51,4 +53,4 @@ function Reviewcard({ review }) {
   );
 }
 
-export default Reviewcard;
+export default memo(Reviewcard);

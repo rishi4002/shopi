@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa6";
 import logoimage from "./logo.png";
@@ -10,6 +10,7 @@ function Navbar(){
     function handelBarClick() {
         setbarClick(!barClick);
     }
+
     return (
         <div className="bg-blue-500/90 py-2 pr-5 flex justify-between text-white text-[18px]">
             <div className="sm:hidden">
@@ -32,4 +33,4 @@ function Navbar(){
 }
 
 
-export default Navbar;
+export default memo(Navbar);

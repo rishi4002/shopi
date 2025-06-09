@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getproduct } from "./Apis";
 import { useNavigate, useParams } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -11,7 +11,7 @@ function Detailcard(){
     const [noProduct, setnoProduct]= useState(false);
     const [apiWorks, setapiWorks]= useState(true);
    
-   console.log(Product.reviews);
+
     const params= useParams();
     const id= params.id;
     let navigate= useNavigate();
@@ -27,16 +27,17 @@ function Detailcard(){
         
     },[])
 
-    function handleBack(){
+    const handleBack= useCallback(function (){
        navigate("/");
-    }
+    },[]);
+
 
     function handelInput(e) {
         setinputNum(e.target.value);
     }
 
     function handelCount(){ 
-         const cart = JSON.parse(localStorage.getItem("cart") || "{}") 
+        const cart = JSON.parse(localStorage.getItem("cart") || "{}") 
 if (inputNum > 0) {
     let newCart= {...cart, [id]:  (Number(cart[id]) || 0 ) + Number(inputNum)};
     localStorage.setItem("cart", JSON.stringify(newCart));
@@ -45,6 +46,8 @@ if (inputNum > 0) {
 }
 else setnoProduct(true);
  }
+
+
 
  if (apiWorks === false) {
     return <div className="text-xl sm:text-2xl text-sky-500/100 flex items-center h-full">
