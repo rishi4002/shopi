@@ -6,6 +6,7 @@ import Detailcard from './Detailcard';
 import { Route, Routes } from 'react-router-dom';
 import Contact from './Contact';
 import Cart from './Cart';
+import Notfound from './Notfound';
 
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/product/:id' element={<Detailcard />} />
           <Route path='/contact' element={<Contact/>} />
           <Route path='/cart' element={<Cart />} />
+          <Route path="*" element={<Notfound/>} />
         </Routes>
         
       </div>
